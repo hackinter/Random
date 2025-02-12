@@ -15,6 +15,11 @@ import time
 # Console Setup
 console = Console()
 
+# Headers Definition
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.0.0 Safari/537.36"
+}
+
 def get_ip(url):
     domain = url.replace("https://", "").replace("http://", "").split("/")[0]
     try:
@@ -104,10 +109,6 @@ def detect_social_media_links(soup):
     return detected_links
 
 def analyze_website(url):
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.0.0 Safari/537.36"
-    }
-
     try:
         response = requests.get(url, headers=headers, timeout=10)
         soup = BeautifulSoup(response.text, "html.parser")
